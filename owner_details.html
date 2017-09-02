@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+
+<html ng-app="movilist_record">
+
+<head>
+    <title>CAST Frontend Developer Test</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+
+    <!--StyleSheet-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/custom.css" />
+    <!-- Font Awesome -->
+    <script src="https://use.fontawesome.com/e2c208f24d.js"></script>
+    <!--Script-->
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/custom.js"></script>
+    <noscript>Opps! Please enable javascript</noscript>
+
+
+</head>
+
+<body>
+
+    <div class="">
+        <header class="header">
+            <div class="container">
+                <figure><img src="image/CAST_grey_100_bl.jpg" class="img-responsive"></figure>
+                <h3>TechScan</h3>
+            </div>
+        </header>
+        <section>
+            <div class="container owner_details">
+
+                <div class="book_list pull-left col-md-3" ng-controller="moviesData">
+                    <figure>
+                        <img ng-src="{{x.avatar_url}}"> </figure>
+                    <h3>{{x.login | capitalize}}</h3>
+
+                    <a href="{{x.html_url}}" class="btn btn-primary" target="_blank">Url</a>
+
+
+                </div>
+                <div class=" col-md-9 pull-left repos" ng-controller="pinnedRepos">
+                    <h2>{{pinned}}</h2>
+                    <pinned-repo></pinned-repo>
+
+                </div>
+        </section>
+        <footer class="footer ">
+            <p> Copyright 2017 - CAST | All Rights Reserved</p>
+        </footer>
+
+
+
+
+
+</body>
+
+</html>

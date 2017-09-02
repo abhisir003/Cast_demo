@@ -1,0 +1,13 @@
+﻿<div class="movie_data">
+    <div class="row ">
+        <div class="col-md-6 " ng-repeat="data in response">
+            <div class="title ">
+                <h3><a href="/owner_details.html/{{data.id}}">{{data.full_name}}</a><br><span>{{data.description}}</span><br><span class="date">Update at: <i class="fa fa-calendar"></i> {{data.updated_at | date}}</span></h3>
+                <h4 ng-hide="data.language == null || data.language == 0"><i class="fa fa-circle"></i> {{data.language}}
+                </h4>
+                <h5><i class="fa fa-star"></i> {{data.stargazers_count | thousandSuffix}}</h5>
+
+            </div>
+        </div>
+    </div>
+</div>

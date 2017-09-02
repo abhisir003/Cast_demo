@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+
+<html ng-app="movilist_record">
+
+<head>
+    <title>CAST Frontend Developer Test</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+
+    <!--StyleSheet-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/custom.css" />
+    <!-- Font Awesome -->
+    <script src="https://use.fontawesome.com/e2c208f24d.js"></script>
+    <!--Script-->
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/custom.js"></script>
+    <noscript>Opps! Please enable javascript</noscript>
+
+
+</head>
+
+<body>
+
+    <div class="" ng-controller="moviesData">
+        <header class="header">
+            <div class="container">
+                <figure><img src="image/CAST_grey_100_bl.jpg" class="img-responsive"></figure>
+                <h3>TechScan</h3>
+            </div>
+        </header>
+        <section>
+            <div class="container">
+                <div class="row search_bg">
+                    <div class="col-md-6 col-sm-6  col-sx-12"> <input ng-model="q" id="search" class="form-control" placeholder="Searh By Name/Title..">
+                    </div>
+                    <div class="col-md-2 col-sm-2  col-sx-4"><b>Page No:{{currentPage+1}}/{{numberOfPages()}}</b></div>
+                    <div class="col-md-3 col-sm-3 col-sx-4"> {{response.total_count}} repository results
+                    </div>
+
+                    <div class="col-md-1 col-sm-3 col-sx-4">Sorting :<select ng-model="pageSize" id="pageSize" class="form-control">     
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+     </select></div>
+                </div>
+                <div class="book_list pull-left col-md-8">
+
+                    <section class="movie_data" ng-repeat="data in response.items | filter:q | filter:genresfilter |filter:filter2 |startFrom:currentPage*pageSize | limitTo:pageSize">
+                        <div class="row ">
+                            <div class="col-md-12">
+                                <div class="title ">
+                                    <h3><a href="/owner_details.html/{{data.id}}">{{data.full_name}}</a><br><span>{{data.description}}</span><br><span class="date">Update at: <i class="fa fa-calendar"></i> {{data.updated_at | date}}</span></h3>
+                                    <h4 ng-hide="data.language == null || data.language == 0"><i class="fa fa-circle"></i> {{data.language}}
+                                    </h4>
+                                    <h5><i class="fa fa-star"></i> {{data.stargazers_count | thousandSuffix}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+
+                    <div class="text-lg-center text-md-center text-xs-center ">
+                        <div class="pagination ">
+                            <button class="btn-primary " ng-disabled="currentPage==0 " ng-click="currentPage=currentPage-1 ">
+        <i class="fa fa-arrow-left " aria-hidden="true "></i>Previous
+    </button>
+
+                            <button class="btn-primary " ng-disabled="currentPage>= getData().length/pageSize - 1" ng-click="currentPage=currentPage+1"> Next
+        <i class="fa fa-arrow-right" aria-hidden="true"></i>
+        </button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <aside class="book_listing pull-right col-md-4">
+
+
+                    <aside-lang></aside-lang>
+                </aside>
+            </div>
+        </section>
+        <footer class="footer">
+            <p> Copyright 2017 - CAST | All Rights Reserved</p>
+        </footer>
+
+
+
+
+
+</body>
+
+</html>
